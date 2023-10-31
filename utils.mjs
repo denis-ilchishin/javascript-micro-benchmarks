@@ -72,12 +72,18 @@ export class BenchmarkRunner {
       if (this.benchmarkName && key !== this.benchmarkName) continue;
       const startTime = process.hrtime();
       const memoryUsageStart = process.memoryUsage().heapUsed;
+      const cpuUsageStart = process.cpuUsage().user;
       await benchmark.execute();
+      const cpuUsageEnd = process.cpuUsage().user;
       const memoryUsageEnd = process.memoryUsage().heapUsed;
-      const memoryDifference = (memoryUsageEnd - memoryUsageStart) / 1024 ** 2;
+      const memoryDifference = (
+        (memoryUsageEnd - memoryUsageStart) /
+        1024 ** 2
+      ).toFixed(2);
+      const cpuUsage = ((cpuUsageEnd - cpuUsageStart) / 1000).toFixed(2);
       const endTime = process.hrtime(startTime);
       const totalTime = (endTime[0] * 1e9 + endTime[1]) / 1e6;
-      const resultLog = highlight`Took ${totalTime} ms; \nHeap difference: ${memoryDifference} MB`;
+      const resultLog = highlight`Took ${totalTime} ms; \nHeap difference: ${memoryDifference} MB \nCPU usage: ${cpuUsage} ms`;
       console.log(benchmark.describe());
       console.log(resultLog, "\n");
     }

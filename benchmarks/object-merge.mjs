@@ -2,11 +2,85 @@ import { LoopBenchmark, benchmark } from "../utils.mjs";
 
 class ObjectMergeBenchmark extends LoopBenchmark {
   createObject1() {
-    return { a: 1, b: "2", c: [3, "4", true] };
+    return {
+      id: 1,
+      name: "John Doe",
+      age: 30,
+      isMarried: true,
+      children: [
+        {
+          id: 1,
+          name: "Jane Doe",
+          age: 10,
+        },
+        {
+          id: 2,
+          name: "Jim Doe",
+          age: 7,
+        },
+      ],
+      address: {
+        street: "123 Main St",
+        city: "Anytown",
+        state: "Anystate",
+        zip: "12345",
+      },
+      hobbies: ["reading", "hiking", "coding"],
+      education: {
+        highSchool: "Anytown High",
+        college: "Anytown University",
+        degrees: ["BS in Computer Science", "MS in Software Engineering"],
+      },
+      employment: [
+        {
+          company: "Company A",
+          position: "Software Engineer",
+          years: 5,
+        },
+        {
+          company: "Company B",
+          position: "Senior Software Engineer",
+          years: 3,
+        },
+      ],
+    };
   }
 
   createObject2() {
-    return { c: [5, "6", false], d: "7", e: { f: "8", g: 9, h: "10" } };
+    return {
+      productId: 101,
+      productName: "Product A",
+      price: 50.5,
+      inStock: true,
+      tags: ["electronics", "gadgets"],
+      manufacturer: {
+        name: "Manufacturer A",
+        location: "Location A",
+        established: 1990,
+      },
+      reviews: [
+        {
+          userId: 1,
+          review: "Great product!",
+          rating: 5,
+        },
+        {
+          userId: 2,
+          review: "Good value for money.",
+          rating: 4,
+        },
+      ],
+      specifications: {
+        color: "Black",
+        weight: "1.5kg",
+        dimensions: "10x5x3 inches",
+        power: "5W",
+      },
+      warranty: {
+        period: "1 year",
+        serviceType: "On-site",
+      },
+    };
   }
 
   run() {
