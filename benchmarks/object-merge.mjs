@@ -114,7 +114,7 @@ class SpreadBenchmark extends ObjectMergeBenchmark {
 
   run() {
     const objects = super.run();
-    const result = { ...objects[0], ...objects[1] };
+    const result = { ...objects[0], ...objects[1], ...objects[2] };
     return result;
   }
 }
